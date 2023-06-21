@@ -1,0 +1,37 @@
+<h3>Data Binding</h3>
+<p>
+    Ejemplo Boton
+    <!--Data binding
+    Esa transformacion que hace en tienpo de ejecucion la aplicasion
+    se llama data binding con la implementacion
+
+    Fíjate que acá, con la implementación de este nivel encerrado entre corchetes, 
+    me permite a mí poder
+    asignarle una variable que yo tenga configurada acá en mi punto DS, en mi, 
+    en el archivo TS del componente.-->
+    <br><br>
+    <!--Pasados de variables [propiedad disables] = nombre de la variable (su valor indica una propiedad)-->
+    <!--Event Binding evento de click asociado auna funcion cambiar() 
+    que al hacer click acede a esa funcion que asigna un nombre a una
+variable de tipo texto que modifica las propiedades del html css
+en este caso cambia el nombre de la imagen cambiando la imagen-->
+    <button [disabled] = "disabled" (click)="cambiar()">Presionar</button>
+</p>
+<!-- uso de itnerpolacion pude funcionar similar al data binding
+este uso pude causar inconveniente ya que se puede confundir entre validar
+la sintaxis del css con la sintaxis del angular-->
+    <div style="background-color: {{color}};">Hola</div>
+    <hr>
+    <!---->
+    <div [style] = "'background-color:'+color+';'">Hola</div>
+    <hr>
+    <p>
+        {{texto}}
+    </p>
+<!--Data binding-->
+    <p [innerHTML]="texto"></p>
+    <hr>
+    <div>
+        <img [src]="'/assets/images/'+img" [width]="ancho" [height]="alto"/>
+    </div>
+

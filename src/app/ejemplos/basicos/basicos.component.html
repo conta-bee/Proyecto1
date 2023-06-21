@@ -1,0 +1,164 @@
+<h4>Interpolacion</h4>
+<!--Interpolacion acediendo al valor del recurso
+que tengo dentro del archivo.ts-->
+<ul>
+<li>nombre : {{ nombre }}</li>
+<li>E-Mail : {{correo}}</li>
+<li>Edad : {{edad}} años</li>
+<li>Fecha : {{fecha}}</li>
+<!--Binding  : objeto como binding.
+Qué significa un objeto como Vini?
+
+Que vamos a procesar una propiedad del spam pero desde 
+Angular entonces la propiedad que vamos a usar ahora se 
+llama inner HTML.
+
+propiedad 
+[innerHTML] = "nombre de la variable que yo quiera"-->
+<li>HTML : <span [innerHTML] = "html"></span></li>
+
+<li>Paises : {{paises}}</li>
+</ul>
+<hr>
+<h4>Condicionales</h4>
+<!--Condicionales  
+-->
+<p *ngIf = "edad>=18; else Frasex">Es Mayor De Edad</p>
+<!--pa que que este ng-template quede asociado a la condicion
+de arriba se reserva la palabra ; else 'frase que asociara al 
+ng-template' y en el ng-template se le  asigna
+#frase que se eligio en la asociacion -->
+<ng-template #Frasex>
+    <p>No es mayor de edad, es muy joven aun</p>
+</ng-template>
+<hr>
+<h4>Operador Ternario</h4>
+<!--Un operador ternarios es 
+Este es el formato estándar en cualquier lenguaje de 
+programación de lo que es
+un formato más resumido de hacer una condición.-->
+<p>{{ (edad>=18) ? 'ternario si es mayor' : 'ternario si no es mayor' }}</p>
+<hr>
+<h4>Switch case</h4> 
+<!--Generacion de un switch en angular-->
+<div [ngSwitch] = "numero">
+<p *ngSwitchCase = "12">Es 12</p>
+<p *ngSwitchCase = "13">Es 13</p>
+<p *ngSwitchCase = "14">Es 14</p>
+<p *ngSwitchCase = "15">Es 15</p>
+<p *ngSwitchCase = "16">Es 16</p>
+<p *ngSwitchDefault>Ninguna Coincidencia</p>
+</div>
+<hr>
+<!--ng-container
+    El entry container es un contenedor que te permite ejecutar 
+    una condición, pero fuera del código HTML.
+    Es como si tú quisieras hacer esto, es como si tú quisieras 
+    hacer esto.
+If and if es una cosa así
+-->
+<h4>ng-container</h4>
+<ng-container *ngIf = "edad>=18">
+    Se cumple la condicion
+</ng-container>
+<hr>
+<!--ngFor
+Es nomenclatura
+*ngFor  let 'nommbredelavariableinicial' of [areglo 1,2,3,4,n]
+interpolacion impresion de la variable que antes declaramos
+para el ciclo {{'nommbredelavariableinicial'}}
+obtencion del indice 
+*ngFor  let 'nommbredelavariableinicial' of [areglo 1,2,n]; let i = 'index'
+variable i es el indice del ciclo
+
+-->
+<h4>ngFor</h4>
+<ul>
+    <li *ngFor = "let item of [1,2,3,4,5,6,7,8,9] let i = index">
+      {{i + 1}} - numero  {{item}}
+    </li>
+</ul>
+<!--Recorrido de ciclos
+
+-->
+<hr>
+<h4>Recorrer Arreglo</h4>
+<ul>
+    <!--                             variable-indice variable-primerindice  variable-segundavariable                              -->
+    <li *ngFor = "let pais of paises; let i = index; first as primero; last as ultima">
+      {{i+1}}  {{pais.nombre}} ({{pais.dominio}}) <span *ngIf = "primero">
+        Este es el primer indice
+      </span>
+      <span *ngIf = "ultima">
+        Este es el ultimo indice
+      </span>
+    </li>
+</ul>
+<br><br><br><br><br><br><br>
+<hr>
+<!--ng-template
+recorrido de un coclo-->
+<h4>ng-template</h4>
+<ul>
+    <!--           variabledelareglo    nombreareglo variableindice-->
+    <ng-template ngFor let-pais [ngForOf] = "paises" let-i="index">
+        <li>
+            <!--    variablearegloacediendo-caponombre variablearegloacediendo-componentedominio-->
+            {{i+1}} - {{pais.nombre}} ({{pais.dominio}})
+        </li>
+    </ng-template>
+</ul>
+<hr>
+<!--odd even
+-->
+<h4>odd y even</h4>
+    <!--                                       variable impar         variable par             --> 
+<div *ngFor = "let pais of paises; let i = index; let impar = odd; let par = even;"
+[ngClass] = "{azul:par, verde:impar}">
+
+<!--binding ngClass nos permite crear clases y asignarles un
+nombre permitiendonos ahcer manipulaciones con css
+ya que css puede acceder a las claases para darles estilos-->
+    <p>
+   {{i}} - {{pais.nombre}} ({{pais.dominio}})
+
+   <!--senencia determinacion si un valor es par p impar-->
+    <span *ngIf="impar">es impar</span>
+    <span *ngIf="par">es par</span> 
+</p>
+</div>
+<hr>
+<h4>Pipes</h4>
+<!--Pipes Tuberias
+Herramienta llamada tuberia que transforma la informacion-->
+<!-- | lowercase pipe que pasa a minusculas</p>-->
+<p>{{texto | uppercase}}</p>
+<!-- | slice:n:m pipe que inicia en n posicion y termina m posiciones despues</p>-->
+<p>{{texto | slice:0:100}}........</p>
+<!-- | currency pipe que </p>-->
+<p>{{cantidad | currency}}</p>
+<!-- | currency:'EUR':'E' pipe que pasa a minusculas</p>-->
+<p>{{cantidad | currency:'EUR':'E'}}</p>
+<!-- | currency:'USD':'$' pipe que pasa a minusculas</p>-->
+<p>{{cantidad | currency:'USD':'$'}}</p>
+<!-- | date pipe que pasa a minusculas</p>-->
+<p>{{fecha | date}}</p>
+<!-- | date: 'dd/MM/yy' pipe que pasa a minusculas</p>-->
+<p>{{fecha | date: 'dd/MM/yy'}}</p>
+<!--Acceso al pipe personalizado que ya habiamos creado-->
+<p>{{fecha | formateaFecha}}</p>
+<p>{{cantidad | formateaNumeros}}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
