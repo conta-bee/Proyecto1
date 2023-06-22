@@ -1,0 +1,11 @@
+<h3>Comunicacion entre componentes</h3>
+<!--Desde el primer componente yo voy a llamar al segundo componente y pasarle
+valores a las variables desde este que es el primer componente-->
+<app-comunicacion2 titulo="hola" subtitulo="sub titulo"></app-comunicacion2>
+<!--Con el data bindin pasamos el valor de las variables del componente padre a las 
+variables del componente2 hijo-->                        <!--Variable valorhijo del hijo = al metodo actualizarHijo($event) del padre que asigna el valor de la variable del hijo valorhijo a la variable del padre hijo-->                         
+<app-comunicacion2 [titulo]="texto1" [subtitulo]="texto2" (valordelhijo) = "actualizarHijo($event)"></app-comunicacion2>
+
+<p>
+    hijo : {{hijo}}
+</p>

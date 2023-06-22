@@ -1,11 +1,64 @@
 <h1>Hola Mundo Desde Angular</h1>
 
+<ul>
+    <li>
+      <!--
+        link hacia la ruta principal  que genera un refrescar de pagina
+        a veces las SPA se marean cuando hacen mucho enrutamiento 
+        con Lazy Loading (carga perezosa) 
+        Hay herramientas que te permiten procesar eso porque en realidad 
+        ahí hay un problema de caché.
+        Pero cuando los proyectos tienen demasiado tráfico, a veces igual
+         se marea.
+         Entonces, en ocasiones, de igual forma, es necesario trabajar 
+         con enrutamiento normal directamente con href. ejemplo abajo
+        <a href="/">Home</a>
+      -->
+
+      <!--
+        <a routerLink="/" routerLinkActive="enlaces">Home</a>
+        no se recomienda usar el routerLinkActive en el home
+        ya que este siempre esta activo por lo que se 
+        aplicaran estilos sin siquiera seleccionarlo
+
+      -->
+
+
+        <a routerLink="/">Home</a>
+    </li>
+    <li>
+        <!--Ahora, en lugar de utilizar href acá, lo que vamos a utilizar 
+            en Angular va a ser Router Link.-->
+        <a routerLink="/ruta-2/45/mi-mama-me-mima" routerLinkActive="enlaces">Ruta 2</a>
+    </li>
+    <li>
+        <!--routerLink permite Lazy Loading(Carga perezosa)
+        Pero fíjate que ahora la navegación es sin refrescar la página.
+        Me permite navegar igual, sin ningún tipo de problema.
+        -->
+        <a routerLink="/formularios" routerLinkActive="enlaces">Formularios</a>
+    </li>
+    <li>
+        <!--sintexis  routerLinkActive="nombre de la clase de estilos "-->
+        <a routerLink="/material" routerLinkActive="enlaces">Material</a>
+    </li>
+</ul>
+
 <!--Forma de llamar un componente desde otro 
 componente (inyectar un component)
 <app-ejemploxd></app-ejemploxd>
 <hr>
 <app-ejemplo2></app-ejemplo2>
 <app-basicos></app-basicos>
---> 
 <app-data-binding></app-data-binding>
+<app-ciclo-de-vida></app-ciclo-de-vida>
+<app-comunicacion></app-comunicacion>
+--> 
+<!--Esta instruccion que va a permitir que cualquiera de las
+peticiones asociadas a alguna de las rutas que tu tengas disponibilisadas
+en en (app-routing.module  en la constante const routes: Route)
+va a ser inyectada a este tag puede usarse en cualquier componente pero
+suele usarse en el app-component.html por que es el que esta configurado
+como inicializador de todo -->
+<router-outlet></router-outlet>
 
